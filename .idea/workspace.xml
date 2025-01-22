@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13e69f49-5fcc-4bcf-aa4b-29a03e2ef127" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATM Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ATM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/Muscle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/OptionMenu.java" afterDir="false" />
-    </list>
+    <list default="true" id="13e69f49-5fcc-4bcf-aa4b-29a03e2ef127" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +20,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MandisaM145/ATM-Project-with-Java-1.git",
+    "accountId": "63420d56-5d37-4b2c-9754-21ef25373b5f"
+  }
+}]]></component>
   <component name="IlluminatedCloudWorkspaceSettings">
     <option name="projectWorkspaceSettings">
       <ProjectWorkspaceSettings>
@@ -74,6 +69,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/MMngadi/IdeaProjects/ATM Project/src/Main.java",
+    "settings.editor.selected.configurable": "advanced.settings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -94,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737469374150</updated>
       <workItem from="1737469375647" duration="1970000" />
-      <workItem from="1737471366272" duration="22966000" />
+      <workItem from="1737471366272" duration="23617000" />
     </task>
     <servers />
   </component>
