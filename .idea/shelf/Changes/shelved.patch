@@ -1,0 +1,525 @@
+Index: src/com/OptionMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/OptionMenu.java b/src/com/OptionMenu.java
+new file mode 100644
+--- /dev/null	(date 1737559615203)
++++ b/src/com/OptionMenu.java	(date 1737559615203)
+@@ -0,0 +1,180 @@
++package com;
++import java.io.IOException;
++import java.text.DecimalFormat;
++import java.util.*;
++
++public class OptionMenu {
++    Scanner menuInput = new Scanner(System.in);
++    DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
++    HashMap<Integer, Account> data = new HashMap<Integer, Account>();
++
++    public void getLogin() throws IOException {
++        boolean end = false;
++        int customerNumber = 0;
++        int pinNumber = 0;
++        while (!end) {
++            try {
++
++                data.put(952141, new Account(952141, 191904, 1000, 3000));
++                data.put(123, new Account(123, 121, 20000, 50000));
++                data.put(952356, new Account(952356, 191905, 1000, 5000));
++                data.put(124, new Account(124, 122, 60000, 40000));
++
++                System.out.print("\nEnter your customer number: ");
++                customerNumber = menuInput.nextInt();
++                System.out.print("\nEnter your PIN number: ");
++                pinNumber = menuInput.nextInt();
++                Iterator it = data.entrySet().iterator();
++                while (it.hasNext()) {
++                    Map.Entry pair = (Map.Entry) it.next();
++                    Account acc = (Account) pair.getValue();
++                    if (data.containsKey(customerNumber) && pinNumber == acc.getPinNumber()) {
++                        getAccountType(acc);
++                        end = true;
++                        break;
++                    }
++                }
++                if (!end) {
++                    System.out.println("\nWrong Customer Number or Pin Number");
++                }
++            } catch (InputMismatchException e) {
++                System.out.println("\nInvalid Character(s). Only Numbers.");
++            }
++        }
++    }
++/* Display Account Type Menu with Selection*/
++
++    public void getAccountType(Account acc) {
++
++        boolean end = false;
++        while (!end) {
++            try {
++
++                System.out.println("Select the Account you want to access: ");
++                System.out.println("Type 1 - Checking Account");
++                System.out.println("Type 2 - Savings Account");
++                System.out.println("Type 3 - Exit");
++                System.out.print("Choice: ");
++
++                int selection = menuInput.nextInt();
++
++                switch (selection) {
++                    case 1:
++                        getChecking(acc);
++                        break;
++                    case 2:
++                        getSaving(acc);
++                        break;
++                    case 3:
++                        System.out.println("Thank you for using this ATM, bye.");
++                        break;
++
++                    case 4:
++                        end = true;
++                        break;
++
++                    default:
++                        System.out.println("\n" + "Invalid choice: " + selection);
++                        getAccountType(acc);
++                }
++            } catch (InputMismatchException e) {
++                System.out.println("\nInvalid Choice.");
++                menuInput.next();
++            }
++        }
++    }
++    /* Display Account Type Menu with Selection*/
++    public void getChecking(Account acc) {
++        boolean end = false;
++        while (!end) {
++            try
++            {
++        System.out.println("Checking Account: ");
++        System.out.println("Type 1 - View Balance");
++        System.out.println("Type 2 - Withdraw Funds");
++        System.out.println("Type 3 - Deposit Funds");
++        System.out.println("Type 4 - Exit");
++        System.out.print("Choice: ");
++
++       int selection = menuInput.nextInt();
++
++        switch (selection){
++            case 1:
++                System.out.println("\nChecking Account Balance: " + moneyFormat.format(acc.getSavingBalance()));
++                getAccountType(acc);
++                break;
++            case 2:
++                acc.getCheckingWithdrawInput();
++                getAccountType(acc);
++                break;
++            case 3:
++                acc.getCheckingDepositInput();
++                getAccountType(acc);
++                break;
++            case 4: System.out.println(" Thank you for using this ATM, bye.");
++                break;
++            case 5:
++                end = true;
++                break;
++
++            default:
++                System.out.println("\nInvalid choice: " + selection);
++            getChecking(acc);
++
++        }
++            } catch (InputMismatchException e) {
++                System.out.println("\nInvalid Choice.");
++                menuInput.next();
++            }
++
++
++    }
++    }
++
++
++    public void getSaving(Account acc) {
++        System.out.println("Saving Account: ");
++        System.out.println("Type 1 - View Balance");
++        System.out.println("Type 2 - Withdraw Funds");
++        System.out.println("Type 3 - Deposit Funds");
++        System.out.println("Type 4 - Exit");
++        System.out.print("Choice: ");
++
++        int selection = menuInput.nextInt();
++
++        switch (selection){
++            case 1:
++                System.out.println("Saving Account balance: " + moneyFormat.format(acc.getSavingBalance()));
++                getAccountType(acc);
++                break;
++            case 2:
++                acc.getSavingWithdrawInput();
++                getAccountType(acc);
++                break;
++            case 3:
++                acc.getSavingDepositInput();
++                getAccountType(acc);
++                break;
++            case 4: System.out.println(" Thank you for using this ATM, bye.");
++                break;
++
++            default:
++                System.out.println("\n"+"Invalid choice: " + selection);
++                getSaving(acc);
++
++        }
++    }
++
++}
++
++
++
++
++
++
++
++
++
++
++
++
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1737469380207)
++++ b/.idea/misc.xml	(date 1737469380207)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/com/ATM.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/ATM.java b/src/com/ATM.java
+new file mode 100644
+--- /dev/null	(date 1737558848848)
++++ b/src/com/ATM.java	(date 1737558848848)
+@@ -0,0 +1,15 @@
++package com;
++
++
++import java.io.IOException;
++
++public class ATM extends OptionMenu{
++    public static void main(String[] args) throws IOException {
++      OptionMenu optionMenu = new OptionMenu();
++
++
++        optionMenu.getLogin();
++
++
++        }
++    }
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1737469380230)
++++ b/.idea/vcs.xml	(date 1737469380230)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/com/Muscle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/Muscle.java b/src/com/Muscle.java
+new file mode 100644
+--- /dev/null	(date 1737548440687)
++++ b/src/com/Muscle.java	(date 1737548440687)
+@@ -0,0 +1,5 @@
++package com;
++
++public class Muscle{
++
++}
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(date 1737469373496)
++++ b/.gitignore	(date 1737469373496)
+@@ -0,0 +1,29 @@
++### IntelliJ IDEA ###
++out/
++!**/src/main/**/out/
++!**/src/test/**/out/
++
++### Eclipse ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++bin/
++!**/src/main/**/bin/
++!**/src/test/**/bin/
++
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++
++### VS Code ###
++.vscode/
++
++### Mac OS ###
++.DS_Store
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1737469379807)
++++ b/.idea/.gitignore	(date 1737469379807)
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
+Index: ATM Project.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ATM Project.iml b/ATM Project.iml
+new file mode 100644
+--- /dev/null	(date 1737469380179)
++++ b/ATM Project.iml	(date 1737469380179)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1737469380192)
++++ b/.idea/modules.xml	(date 1737469380192)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/ATM Project.iml" filepath="$PROJECT_DIR$/ATM Project.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/com/Account.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/Account.java b/src/com/Account.java
+new file mode 100644
+--- /dev/null	(date 1737560215595)
++++ b/src/com/Account.java	(date 1737560215595)
+@@ -0,0 +1,152 @@
++package com;
++
++import java.text.DecimalFormat;
++import java.util.Scanner;
++
++public class Account {
++    Scanner input = new Scanner(System.in);
++    DecimalFormat moneyFormat = new DecimalFormat("'$' ###,##0.00");
++
++
++    public Account() {
++    }
++
++    public Account(int customerNumber, int pinNumber) {
++        this.customerNumber = customerNumber;
++        this.pinNumber = pinNumber;
++    }
++
++    public Account(int customerNumber, int pinNumber, double checkingBalance, double savingBalance) {
++        this.customerNumber = customerNumber;
++        this.pinNumber = pinNumber;
++        this.checkingBalance = checkingBalance;
++        this.savingBalance = savingBalance;
++    }
++    /* set the customer number */
++
++        public int setCustomerNumber(int customerNumber) {
++            this.customerNumber = customerNumber;
++            return customerNumber;
++    }
++
++    /* get the customer number */
++    public int getCustomerNumber() {
++        return customerNumber;
++    }
++
++    /* set the PIN */
++    public int setPinNumber(int pinNumber) {
++        this.pinNumber = pinNumber;
++        return pinNumber;
++    }
++    /* get the PIN */
++
++    public int getPinNumber() {
++        return pinNumber;
++    }
++
++    /* get Checking Account Balance */
++  public double getCheckingBalance() {
++      return checkingBalance;
++  }
++
++    /* get Saving Account Balance */
++    public double getSavingBalance() {
++        return savingBalance;
++    }
++
++    /* Calculate checking Account withdrawal */
++
++    public double calcCheckingWithdraw(double amount) {
++        checkingBalance = (checkingBalance - amount);
++        return checkingBalance;
++    }
++
++    /* Calculate Saving Account withdrawal */
++    public double calcSavingWithdraw(double amount) {
++        savingBalance = (savingBalance - amount);
++        return savingBalance;
++    }
++
++
++    /* Calculate checking Account Deposit */
++
++    public double calcCheckingDeposit(double amount) {
++        checkingBalance = (checkingBalance + amount);
++        return checkingBalance;
++    }
++
++    /* Calculate Saving Account Deposit */
++    public double calcSavingDeposit(double amount) {
++        savingBalance = (savingBalance + amount);
++        return savingBalance;
++    }
++
++    /* Calculate checking Account Withdrawal Input */
++     public void getCheckingWithdrawInput() {
++         System.out.println("Checking Account Balance: " + moneyFormat.format(checkingBalance));
++         System.out.print("Amount you want to withdraw from checking Account: ");
++         double amount = input.nextDouble();
++
++         if ((checkingBalance - amount) >= 0) {
++             calcCheckingWithdraw(amount);
++             System.out.println("New checking Account Balance: " + moneyFormat.format(checkingBalance));
++         } else {
++             System.out.println("Balance cannot be negative." + "\n");
++         }
++     }
++
++    /* Calculate saving Account Withdrawal Input */
++
++    public void getSavingWithdrawInput() {
++        System.out.println("Saving Account Balance: " + moneyFormat.format(savingBalance));
++        System.out.print("Amount you want to withdraw from Saving Account: ");
++        double amount = input.nextDouble();
++
++        if ((savingBalance - amount) >= 0) {
++            calcSavingWithdraw(amount);
++            System.out.println("New Saving Account Balance: " + moneyFormat.format(savingBalance));
++        } else {
++            System.out.println("Balance cannot be negative." + "\n");
++        }
++    }
++    /* Calculate Checking Account Deposit Input */
++
++    public void getCheckingDepositInput() {
++        System.out.println("Checking Account Balance: " + moneyFormat.format(checkingBalance));
++        System.out.print("Amount you want to Deposit from checking Account: ");
++        double amount = input.nextDouble();
++
++        if ((checkingBalance + amount) >= 0 && amount >= 0) {
++            calcCheckingDeposit(amount);
++            System.out.println("New checking Account Balance: " + moneyFormat.format(checkingBalance));
++        } else {
++            System.out.println("Balance cannot be negative." + "\n");
++        }
++    }
++
++    /* Calculate Saving Account Deposit Input */
++
++    public void getSavingDepositInput() {
++        System.out.println("Saving Account Balance: " + moneyFormat.format(savingBalance));
++        System.out.print("Amount you want to Deposit from Saving Account: ");
++        double amount = input.nextDouble();
++
++        if ((savingBalance + amount) >= 0) {
++            calcSavingDeposit(amount);
++            System.out.println("New Saving Account Balance: " + moneyFormat.format(savingBalance));
++        } else {
++            System.out.println("Balance cannot be negative." + "\n");
++        }
++    }
++
++
++    private int customerNumber;
++    private int pinNumber;
++    private double checkingBalance = 0;
++    private double savingBalance = 0;
++
++
++}
++
++
